@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <span>Total clicks: 0</span>
+        <button id="btn">Click me</button>
+    </body>
+    <script>
+        let counter = 0;
+        const button = document.getElementById("btn")
+        const span = document.querySelector("span"); //찾은 첫번째 span을 반환함 배열이아님
+        span.innerText = counter
+        function handleClick() {
+            counter = counter + 1;
+            span.innerText = `Total click: ${counter}`
+        }
+        
+        button.addEventListener("click", handleClick)
+    
+    </script>
+</html>
