@@ -14,20 +14,19 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
         const root = document.getElementById("root");
-        let counter = 0;
-        
-        function countUp() {
-            //code
-            counter = counter + 1;
-        }
         
         function App() {
             //배열은 간단하게 꺼낼 수 있음 const [tomato, apple] = ["tomato","apple"];
-            const [counter,modifier] = React.useState(0); //첫번째: 초기값, 두번째 초기값을 변경할 수 있는 함수
+            const [counter, setCounter] = React.useState(0); //첫번째:  현재 상태 값, 두번째: 상태를 업데이트하는 함수입니다
+            
+            const onClick = () => {
+                setCounter(counter + 1); // 상태 값을 업데이트하며, React는 컴포넌트를 다시 렌더링함
+            }
+            
             return (
                     <div>
                         <h3>Total click: {counter}</h3>
-                        <button onClick>
+                        <button onClick={onClick}>
                             Click me
                         </button>
                     </div>
