@@ -17,20 +17,23 @@
         let counter = 0;
         
         function countUp() {
+            //code
             counter = counter + 1;
-            render();
         }
-        function render(){
-            ReactDOM.render(<Container/>, root);
+        
+        function App() {
+            //배열은 간단하게 꺼낼 수 있음 const [tomato, apple] = ["tomato","apple"];
+            const [counter,modifier] = React.useState(0); //첫번째: 초기값, 두번째 초기값을 변경할 수 있는 함수
+            return (
+                    <div>
+                        <h3>Total click: {counter}</h3>
+                        <button onClick>
+                            Click me
+                        </button>
+                    </div>
+            );
         }
-        const Container = () => (
-                <div>
-                    <h3>Total click: {counter}</h3>
-                    <button onClick={countUp}>
-                        Click me
-                    </button>
-                </div>
-        );
-        render();
+        
+        ReactDOM.render(<App/>, root);
     </script>
 </html>
