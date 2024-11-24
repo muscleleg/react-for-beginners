@@ -7,33 +7,34 @@
         <div id="root"></div>
     </body>
     <!--React Js는 어플리케이션이 interactive하도록 만들어주는 library,엔진 같은 역할    -->
-    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
     <!--react-dom은 library 또는 package 모든 element를 HTML body에 둘 수 있도록 해줌, React element를 html에 두는것 -->
-    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
     <!--JSX를 사용하려면 일종의 번역과정이 필요함, JSX를 번역해주는 라이브러리    -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
-        const root = document.getElementById("root");
         
         function App() {
-            //배열은 간단하게 꺼낼 수 있음 const [tomato, apple] = ["tomato","apple"];
-            const [counter, setCounter] = React.useState(0); //첫번째:  현재 상태 값, 두번째: 상태를 업데이트하는 함수입니다
-            
-            const onClick = () => {
-                // setCounter(counter + 1); // 상태 값을 업데이트하며, React는 컴포넌트를 다시 렌더링함
-                setCounter(current => current + 1);
-            }
-            
+            const [minutes, setMinutes] = React.useState()
+            const onChange = (event) => {
+                // console.log(event.target) 이벤트
+                // console.log(event.target.value) 이벤트 값
+                setMinutes(event.target.value)
+            };
             return (
                     <div>
-                        <h3>Total click: {counter}</h3>
-                        <button onClick={onClick}>
-                            Click me
-                        </button>
+                        <h1>Super Converter</h1>
+                        <label htmlFor="minutes">Minutes</label>
+                        <input value={minutes} id="minutes" placeholder="Minutes" type="number" onChange={onChange}/>
+                        <h4>You want to convet {minutes}</h4>
+                        <label htmlFor="hours">Hours</label>
+                        <input id="hours" placeholder="Hours" type="number"/>
+                    
                     </div>
             );
         }
         
+        const root = document.getElementById("root");
         ReactDOM.render(<App/>, root);
     </script>
 </html>
