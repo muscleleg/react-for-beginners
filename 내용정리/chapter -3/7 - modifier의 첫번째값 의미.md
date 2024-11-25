@@ -23,7 +23,7 @@
 
 #### 초기 상태:
 ```javascript
-const [flipped, setFlipped] = React.useState(false);
+const [flipped, setFlippe] = React.useState(false);
 // flipped = false
 ```
 
