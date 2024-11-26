@@ -10,33 +10,35 @@
     <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
     <!--react-dom은 library 또는 package 모든 element를 HTML body에 둘 수 있도록 해줌, React element를 html에 두는것 -->
     <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
     <!--JSX를 사용하려면 일종의 번역과정이 필요함, JSX를 번역해주는 라이브러리    -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
-        function Btn({text, onClick}) {
+        function Btn({text, fontSize =16}) { //기본값을 줄 수 잇음
             console.log(text + " was lender")
             return (
                     <button
-                            onClick={onClick}
                             style={{
                                 backgroundColor: "tomato",
                                 color: "white",
                                 padding: "10px 20px",
                                 border: 0,
                                 borderRadius: 10,
-                                fontSize: 16,
+                                fontSize:fontSize,
                             }}>{text}</button>
             )
         }
-        
+        Btn.propTypes={
+            text: PropTypes.string.isRequired,
+            fontSize: PropTypes.number.isRequired
+        }
         const MemorizedBtn = React.memo(Btn)
         function App() {
-            const [value, setValue] = React.useState("Save Changes")
-            const changeValue = () => setValue("Revert Changes");
+
             return (
                     <div>
-                        <MemorizedBtn text={value} onClick={changeValue}/>
-                        <MemorizedBtn text="Continue"/>
+                       <Btn text ="Save Changes" fontSize={18}/>
+                       <Btn text ={"Continue"}/>
                     </div>
             );
         }
